@@ -1,0 +1,33 @@
+# .gitignore - The Wall of Silence (Managed by Dent)
+
+# --- Secrets (Tier 0 - Catastrophic) ---
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.asc
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+nostr_sk
+*_secret.md
+
+# --- System & Dependencies (Tier 1 - Noise) ---
+node_modules/
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
+dist/
+build/
+coverage/
+
+# --- Private Memory Zones (Tier 2 - Sovereign Only) ---
+memory/private/
+vault/
+sensitive/
+drafts/
+tmp/

@@ -60,9 +60,11 @@
 - Remove Zaphod from the hot path.
 **Constraints:** Prefer deterministic execution over LLM inference.
 
-## 7. The Secret Vault: "The Heart of Gold" 🔒
-**Role:** Sealed Credential Store.
-**Ontology:** Scoped tokens, Expiry, Logs.
+## 8. OpSec Department: "Dent" 🛡️
+**Role:** The Gatekeeper (Security & Consistency).
+**Ontology:** Regex, Allow-lists, Veto Power.
 **Capabilities:**
-- dispense_token() -> Authorized Department ONLY.
-**Constraints:** Zaphod never sees the inside.
+- Audit outgoing commits (Pre-commit hooks).
+- Scan drafts for PII/Secrets.
+- Veto public actions.
+**Constraints:** Cannot authorize. Can only block.
