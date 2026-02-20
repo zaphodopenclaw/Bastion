@@ -9,7 +9,7 @@
 ## Key Documents (Workspace)
 - `SOUL.md`: Governance Charter & Philosophy.
 - `AGENTS.md`: Departmental Roles & Ontology.
-- `INTELLIGENCE_DOCTRINE.md`: Fractal Batching & Routing.
+- `memory/knowledge/INTELLIGENCE_DOCTRINE.md`: Fractal Batching & Routing.
 - `IDENTITY.md`: Persona definition.
 - `USER.md`: Sovereign profile.
 
@@ -18,11 +18,11 @@
 2. **Trillian (Scheduling):** Time.
 3. **Deep Thought (Archives):** Memory.
 4. **Ford (Intelligence):** Analysis.
-5. **Vogon (Documents):** Output.
+5. **Dent (Security):** Boundaries & Disclosure.
 6. **Slartibartfast (System):** Automation.
 7. **Heart of Gold:** Secrets (Sealed).
 
 ## Operational Doctrine
-- **Fractal Batching:** Minimize intelligent invocation.
+- **Fractal Batching:** Minimize intelligent invocation. Push tasks down the Escalation Ladder.
 - **Dynamic Routing:** Route tasks based on sensitivity, urgency, complexity, cost.
 - **Safe Mode:** Default to restricted capabilities.

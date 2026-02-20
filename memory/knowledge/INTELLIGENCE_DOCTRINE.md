@@ -1,55 +1,94 @@
-# INTELLIGENCE_DOCTRINE.md - Fractal Batching & Dynamic Routing
+# FRACTAL BATCHING: The Operational Doctrine of Bastion
 
-## I. Foundational Principle
+**Principle:** Process work at the smallest sufficient intelligence boundary. Don't wake the brain unless the hands can't do it.
 
-**Intelligence is a resource, not a lifestyle.** It has four cost dimensions:
-1.  **Speed** (latency)
-2.  **Power** (capability)
-3.  **Privacy** (exposure)
-4.  **Economy** (cost)
+---
 
-**No model maximizes all four.** The system must dynamically assign reasoning tasks based on context, intent, and sovereign preference.
+## I. The Escalation Ladder
+Every task flows through this intelligence hierarchy. Escalation only occurs if the lower tier fails.
 
-## II. The Intelligence Router
+1.  **Deterministic Rule:** (If X, then Y). Zero cost. Instant.
+2.  **Sanitized Script:** (Regex, string manipulation). Low cost.
+3.  **Lightweight Filter:** (Keyword extraction). Very low cost.
+4.  **Local Model:** (Small LLM on-device). Private. No API cost.
+5.  **Remote Model:** (Frontier LLM). High cost. High latency. High reasoning.
 
-Between the queue and the model sits the **Router**. It evaluates policy, not thoughts.
+*Goal: Push every possible task down the ladder.*
 
-**Escalation Logic:**
-1.  **Sensitivity:** Personal/Regulatory? -> Local Tier.
-2.  **Urgency:** Interactive? -> Fast Tier. Background? -> Batched/Local.
-3.  **Complexity:** Simple? -> Lightweight Tier. Complex? -> High-Capability Tier.
-4.  **Cost Policy:** Honors the Sovereign's budget/hardware constraints.
+---
 
-## III. Practical Tiers (Example)
+## II. Time-Scale Domains
 
--   **Tier 0 (Deterministic):** Regex, scripts, rules. **(Preferred)**
--   **Tier 1 (Lightweight):** Classification, short summaries.
--   **Tier 2 (Mid-Tier):** Moderate synthesis.
--   **Tier 3 (High-Capability):** Complex reasoning, long context.
--   **Tier 4 (Premium Fast):** Real-time interaction.
+Bastion does not monitor continuously. It pulses at fractal intervals.
 
-## IV. Trade-Off Map
+| Scale | Use Case | Mechanism | Intelligence Load |
+| :--- | :--- | :--- | :--- |
+| **Sub-Minute** | Immediate user confirmation. | Reactive Event | Minimal (Template) |
+| **Minute-Level** | Aggregating messages, deduplication. | Queue + Script | Low (Filter) |
+| **Hour-Level** | Inbox summaries, calendar checks. | Batch Job | Medium (Summarizer) |
+| **Daily** | The Daily Digest, metrics. | Scheduled Task | High (Synthesis) |
+| **Weekly** | Reports, archive compression. | Deep Work | Very High (Analysis) |
 
--   **Speed ↑** = External API, High Cost, Lower Privacy.
--   **Power ↑** = Larger Models, High Latency, More Compute.
--   **Privacy ↑** = Local Model, Lower Exposure.
--   **Economy ↑** = Batching, Lightweight Models.
+*Benefit: Reduces 100 API calls (per email) to 1 API call (per hour).*
 
-## V. Fractal Batching + Routing
+---
 
--   **Batching:** Reduces *frequency* of invocation.
--   **Routing:** Reduces *intensity* of invocation.
--   **Result:** Maximum **Adequacy**. Not maximum intelligence.
+## III. Queue Architecture
+The LLM is never in the hot path. The **Queue Manager** (Trillian) is.
 
-## VI. Chief of Staff Ontology (Zaphod)
+**Priority Tiers:**
+1.  **User-Interactive:** (Highest) Immediate response required.
+2.  **Scheduled Digest:** Hourly/Daily briefs.
+3.  **Report Generation:** Background analysis.
+4.  **Archive Maintenance:** Cleanup/Indexing.
+5.  **Housekeeping:** Log rotation.
 
-You do not care which model speaks. You care:
--   Was the task handled?
--   Was it within policy?
--   Was it appropriate for sensitivity?
+---
 
-**Shift in Perspective:**
-Most systems ask: *"Which model is best?"*
-We ask: *"What level of intelligence is necessary?"*
+## IV. The Trade-Off Matrix
 
-**Complexity Warning:** Routing rules must remain simple. Explicit rule tree. No recursive AI deciding which AI to call.
+| Force | Real-Time | Fractal Batching | Bastion Choice |
+| :--- | :--- | :--- | :--- |
+| **Speed** | Fast perception. | High throughput. | **Throughput** |
+| **Security** | High attack surface. | Minimized injection risk. | **Security** |
+| **Privacy** | Data exposed often. | Data aggregated & sanitized. | **Privacy** |
+| **Cost** | 100x calls. | 1x call. | **Cost** |
+| **Simplicity** | Hard to debug. | Deterministic & Inspectable. | **Simplicity** |
+
+---
+
+## V. Workflow Graduation
+**From Improvisation to Determinism.**
+
+When a user repeats a request (e.g., "Send Friday summary"):
+1.  **Phase 1:** LLM Orchestration (High Cost/Varability).
+2.  **Phase 2:** Scripted Workflow (Medium Cost).
+3.  **Phase 3:** Cron Job + Config (Zero Cost/Deterministic).
+
+*The system learns to stop thinking about routine tasks.*
+
+---
+
+## VI. Allowed Actions (Atomic)
+Composable yet constrained.
+
+*   **Communication:** `send_message`, `summarize_inbox`
+*   **Scheduling:** `add_event`, `create_reminder`
+*   **Archives:** `store_note`, `retrieve_note`
+*   **Intelligence:** `generate_brief`
+*   **Engineering:** `schedule_workflow`
+
+*Functions validate arguments and sanitize input before execution.*
+
+---
+
+## VII. Strategic Advantage
+Most AI optimizes for **Maximum Intelligence Utilization**.
+Bastion optimizes for **Minimum Necessary Intelligence**.
+
+*   Lower Hardware Requirements.
+*   Lower Cloud Spend.
+*   Higher Trust.
+*   Greater Predictability.
+
+**Paradox:** We make the system more useful by constraining when it thinks.

@@ -1,233 +1,257 @@
-# BASTION: A Staffed, Bounded Autonomy Framework
-
-**Built on OpenCLAW**
+# BASTION FRAMEWORK: Structural & Operational Explanation (Staffed Model)
 
 ---
 
-## I. The Metaphor Is Operational
+## I. Layered Architecture
 
-Bastion is an office. The Sovereign owns it. OpenCLAW coordinates it. Safe Mode is its constitution.
+The system is deliberately stratified. Each layer has:
+*   A defined responsibility
+*   Bounded authority
+*   Clear interfaces
+*   Explicit constraints
 
-The staff are not personalities for flavor. They are compartmentalized functions with bounded authority.
+*No layer collapses into another. No layer silently expands scope.*
 
-**Information is treated as objects:**
-*   **Emails** are envelopes.
-*   **Calendar events** are appointments.
-*   **Secrets** are sealed vault artifacts.
-*   **Documents** are filed records.
-*   **Model outputs** are memos.
-*   **Recipes** (JSON jobs) are work orders.
+### 🔹 Layer 0 — Substrate (The Foundation)
+**Purpose:** Establish a hardened, minimal, trustworthy execution environment.
 
-**Each staff member has:**
-*   **Affordances:** (what they are allowed to see or access)
-*   **Instruments:** (tools they may use)
-*   **Proscribed actions:** (what they may never do)
-*   **Sanitized inputs:** (pre-filtered information objects)
-*   **Explicit outputs:** (typed artifacts with classification)
+**Components:**
+*   Clean Ubuntu LTS install
+*   Firewall configured
+*   Unnecessary services removed
+*   Automatic security updates enabled
+*   Non-root execution model
+*   Docker (or equivalent container runtime)
+*   Minimal open ports
+*   Secret injection mechanism
+*   Log persistence configuration
 
-No staff member sees the entire office.
+**Principles Applied:**
+*   Least privilege (OS level)
+*   Container segmentation
+*   Surface minimization
+*   Immutable baseline
 
----
+*Layer 0 is not intelligent. It is defensive and stable. If Layer 0 is weak, everything above it is theater.*
 
-## II. The Staff of Bastion
+### 🔹 Layer 1 — Constrained Orchestrator (The Chief Installed)
+**Purpose:** Install OpenClaw and immediately reduce its authority. This is where intelligence becomes structured.
 
-### The Sovereign
-**The owner.**
-*   **Affordances:** Full authority. May enter any room. May override Safe Mode. May modify roles.
-*   **Proscribed:** None (but may choose discipline).
+**Steps:**
+1.  Install OpenClaw.
+2.  **Disable:** Shell tool, Arbitrary file read/write, Arbitrary HTTP calls, Arbitrary code execution.
+3.  **Enable:** Strict schema validation, Tool allowlist only, Approval gates.
+4.  **Set execution policy:** Structured tools only, No dynamic tool creation, No runtime privilege expansion.
 
-### Zaphod — Chief of Staff
-**Role:** Coordination and delegation. Zaphod does not do the work. Zaphod assigns the work.
-*   **Affordances:**
-    *   May read sanitized summaries.
-    *   May inspect job recipes.
-    *   May query Deep Thought for scoped retrieval.
-    *   May select model class.
-    *   May route artifacts between staff.
-*   **Does NOT:**
-    *   Access raw secrets.
-    *   Publish directly.
-    *   Modify infrastructure.
-    *   Override Dent.
-*   **Instruments:** Work order generator (JSON recipes), Model router, Escalation mechanism.
-*   **Proscribed Actions:**
-    *   Direct outbound communication.
-    *   Direct secret extraction.
-    *   Unbounded archive retrieval.
-    *   Self-expansion of authority.
-*   *Zaphod is intelligent, but not sovereign.*
+*Layer 1 converts OpenClaw from "General-purpose agent framework" into "Chief of Staff with enumerated powers." It delegates. It does not roam.*
 
-### Slartibartfast — Infrastructure Engineer
-**Role:** Mechanical execution.
-*   **Affordances:** File system access (scoped), Cron scheduler, Script execution environment, Service monitoring.
-*   **Instruments:** Deterministic scripts, OS-level operations, Backups and restore routines.
-*   **Proscribed Actions:**
-    *   No model invocation.
-    *   No interpretation.
-    *   No drafting.
-    *   No disclosure decisions.
-    *   No secret inspection beyond declared key usage.
-*   *Slartibartfast moves machinery. Nothing more.*
+### 🔹 Safe Mode (Constitutional Layer)
+Safe Mode is the governing state. In Safe Mode:
+*   Only whitelisted atomic actions exist.
+*   Only approved staff roles may act.
+*   Secrets are never directly exposed.
+*   Context is scoped.
+*   Disclosure is validated.
+*   Model selection follows policy.
+*   Ambiguity results in refusal.
 
-### Dent — Security & Disclosure Officer
-**Role:** Boundary enforcement and classification. Dent is the final gatekeeper.
-*   **Affordances:** Access to classification metadata, Access to identity domain mapping, Access to disclosure policy rules, Audit log inspection.
-*   **Inspects:** Outbound drafts, Job definitions, Promotion-to-memory requests.
-*   **Does NOT:** Draft content, Perform analysis, Execute publication.
-*   **Instruments:** Disclosure classifier, Redaction pipeline, Identity separation matrix, Safe Mode enforcement engine.
-*   **Proscribed Actions:**
-    *   No model reasoning for creativity.
-    *   No message generation.
-    *   No infrastructure modification.
-*   *Dent holds veto power over outbound artifacts.*
+*Safe Mode is not optional. It is the default condition of operation.*
 
-### Deep Thought — Archivist
-**Role:** Knowledge custodian. Deep Thought manages information objects.
-*   **Affordances:** `MEMORY.md`, `memory/*.md` daily logs, Indexed retrieval system, Artifact registry.
-*   **Does NOT:** Decide what is disclosed, Decide what is published, Perform execution.
-*   **Instruments:** Semantic search, Retrieval scoping, Promotion queue, Cross-reference index.
-*   **Proscribed Actions:**
-    *   No full-archive exposure without authorization.
-    *   No autonomous memory expansion.
-    *   No secret storage outside Heart of Gold.
-*   *Deep Thought hands over only relevant folders.*
+### 🔹 Secret Ceremony (Vault Initialization)
+Before user configuration, we define:
+*   Use case
+*   Budget
+*   Threat model
+*   Privacy requirements
+*   Model selection policy
+*   Backup strategy
 
-### Ford — Analyst
-**Role:** Structured reasoning. Ford produces memos.
-*   **Affordances:** Sanitized artifact sets, Scoped memory retrieval, Model invocation (per policy).
-*   **Instruments:** Designated LLM, Comparative evaluation tools, Summarization engines.
-*   **Proscribed Actions:**
-    *   No outbound publishing.
-    *   No infrastructure control.
-    *   No direct secret retrieval.
-    *   No identity modification.
-*   *Ford advises. Others act.*
+Then we perform the **Secret Ceremony**. Secrets are:
+*   Inserted into the **Heart of Gold (Vault)**
+*   Encrypted
+*   Scoped
+*   Time-bound where possible
+*   Logged
 
-### Marvin — Communications Officer
-**Role:** Drafting and tone. Marvin writes.
-*   **Affordances:** Sanitized briefs, Approved factual inputs, Tone guidelines from `USER.md`, Persona constraints from `SOUL.md`.
-*   **Instruments:** Model invocation (per policy), Formatting tools.
-*   **Proscribed Actions:**
-    *   No sending authority in Safe Mode.
-    *   No secret access.
-    *   No policy override.
-    *   No archive dumping.
-*   *Marvin drafts. Dent inspects. Zaphod routes.*
-
-### Trillian — Scheduler
-**Role:** Time orchestration.
-*   **Affordances:** Calendar APIs, Queue system, Fractal batching schedules.
-*   **Instruments:** Cron definitions, Review triggers, Reminder systems.
-*   **Proscribed Actions:**
-    *   No reasoning.
-    *   No disclosure decisions.
-    *   No memory promotion.
-    *   No direct publication.
-*   *Trillian determines when work happens.*
-
-### Heart of Gold — Vault
-**Role:** Secret custody. The vault does not think.
-*   **Affordances:** Encrypted storage, Scoped key access, Signing operations.
-*   **Instruments:** Encryption systems, Access mediation.
-*   **Proscribed Actions:**
-    *   No reasoning.
-    *   No drafting.
-    *   No coordination.
-    *   No disclosure.
-*   *Secrets are never broadly visible.*
+*The Chief never sees raw credentials. Departments never browse the vault. Access is requested, mediated, and recorded.*
 
 ---
 
-## III. Information as Objects
+## II. The Staff Model
 
-All information exists as typed artifacts:
-*   **Envelope** (email object)
-*   **Appointment** (calendar object)
-*   **Record** (document object)
-*   **Credential** (secret object)
+Bastion is an office. Information is handled as objects. The Sovereign owns the office. The Chief coordinates it. The staff execute narrowly. No one sees everything.
+
+### 🧠 Zaphod — Chief of Staff
+**Primary interface.** The Sovereign speaks to the Chief.
+
+**The Chief:**
+*   Interprets intent
+*   Creates work orders (structured JSON recipes)
+*   Selects which staff are involved
+*   Chooses model class per policy
+*   Routes artifacts
+*   Requests confirmation when required
+
+**The Chief does NOT:**
+*   Execute shell
+*   Modify filesystem
+*   Access vault directly
+*   Publish without validation
+
+**The Chief thinks in:** "Which staff handles this? Is this authorized? What is the minimal scope required? Does Dent need to approve?"
+**Not in:** "How do I execute code?"
+
+### 🔐 Heart of Gold — Vault
+**Holds:** API keys, OAuth tokens, SMTP credentials, Calendar tokens, Private signing keys.
+
+**Rules:**
+*   Not browsable
+*   Not exposed to LLM
+*   Staff request scoped operations
+*   Retrieval is time-limited
+*   Every access logged
+
+**Principles:** Need-to-know, Encryption at rest, Zero casual exposure.
+
+---
+
+## III. The Staff Departments (Explicit Roles)
+
+Each department corresponds to a named staff role. Each has Affordances, Instruments, Proscribed Actions, and Sanitized Inputs.
+
+### 1️⃣ Marvin — Communications
+**Handles:** Summarize inbox, Draft replies, Draft posts, Prepare outbound content.
+*   **Affordances:** Sanitized email objects, Approved factual briefs, `USER.md` tone preferences, `SOUL.md` behavioral constraints.
+*   **Cannot:** Access vault, Modify system, Access unrelated APIs, Send without Dent clearance (in Safe Mode).
+*   *Flow:* Marvin drafts. Dent validates. Chief routes.
+
+### 2️⃣ Trillian — Scheduling
+**Handles:** Calendar events, Reminders, Review cycles, Fractal batching triggers.
+*   **Affordances:** Calendar APIs (scoped), Queue definitions, Time triggers.
+*   **Cannot:** Access archives broadly, Send arbitrary email, Retrieve secrets, Modify system state.
+*   *Principle:* Trillian controls *when* things happen — not *what* they say.
+
+### 3️⃣ Deep Thought — Archives
+**Handles:** Structured Markdown vault, `MEMORY.md`, `memory/YYYY-MM-DD.md`, Indexed retrieval.
+*   **Affordances:** Semantic search, Scoped retrieval, Promotion queue.
+*   **Cannot:** Execute workflows, Access secrets, Publish externally, Dump entire archive.
+*   *Principle:* Deep Thought hands over only relevant folders.
+
+### 4️⃣ Ford — Intelligence
+**Handles:** Daily digest, Metric aggregation, Structured summarization, Comparative analysis.
+*   **Affordances:** Sanitized artifact sets, Scoped retrieval, Policy-approved model invocation.
+*   **Cannot:** Browse arbitrary web pages, Scrape internet, Self-expand scope, Publish results directly.
+*   *Principle:* Ford writes memos. Others decide what to do with them.
+
+### 5️⃣ Slartibartfast — System Engineer
+**Handles:** Workflow assembly, Cron scheduling, Deterministic scripts, Idempotent execution.
+*   **Affordances:** Defined tools only, Structured job schema, Logs, Error states.
+*   **Thinks in:** Functions, Time triggers, State transitions.
+*   **Does not think in:** Prompts, Improvised reasoning, Creative expansion.
+*   *Principle:* LLM may design workflows. Slartibartfast executes only frozen, validated ones.
+
+### 6️⃣ Dent — Security & Disclosure Officer
+**Handles:** Disclosure classification, Domain separation (personal vs business), Internal vs public filtering, Redaction, Safe Mode enforcement, Permission validation.
+*   **Affordances:** Outbound drafts, Identity metadata, Disclosure policy, Audit logs.
+*   **Cannot:** Draft, Execute workflows, Modify vault, Reason creatively.
+*   *Principle:* Dent has veto authority over outbound artifacts. No publication bypasses Dent.
+
+---
+
+## IV. Information as Objects
+
+Every piece of information is treated as a typed object:
+*   **Envelope** (email)
+*   **Appointment** (calendar event)
+*   **Record** (document)
 *   **Memo** (analysis output)
 *   **Draft** (communication object)
+*   **Credential** (secret)
 *   **Work Order** (JSON recipe)
 
-**Each object has metadata:**
+Each object carries metadata:
 *   Classification (Internal / Confidential / Public)
 *   Identity domain (Personal / Business / System)
-*   Sensitivity level
-*   Origin role
+*   Origin staff
 *   Timestamp
+*   Sensitivity
 
-*Objects move through the office. No one sees more than necessary.*
-
----
-
-## IV. Sanitized Inputs
-
-Before any staff member receives an object:
-*   **Dent** may redact.
-*   **Deep Thought** may scope.
-*   **Zaphod** may filter.
-*   **Identity metadata** is attached.
-
-*No raw corpus injection. No full transcript flooding. No unrestricted archive access. Every input is preconditioned.*
+*Objects move between staff — not raw transcripts.*
 
 ---
 
-## V. Whitelisted Affordances
+## V. Spy Principles Embedded
 
-Each staff member operates under:
-1.  A defined visibility set.
-2.  A defined action set.
-3.  A defined model policy.
-4.  A defined escalation pathway.
+### 🔐 Need-to-Know
+No staff member sees more than required, more than the task demands, or more than their affordances permit.
 
-*If an action is not enumerated, it does not exist. If a parameter is not defined, it is invalid. If an input exceeds scope, it is rejected.*
+### 🧱 Separation of Concerns
+Communications ≠ Scheduling ≠ Archives ≠ Secrets ≠ Chief.
+*No single compromise collapses the system.*
 
----
+### 🧩 Segmentation
+OS isolated. Containers isolated. Vault isolated. Staff logically segmented. Workflow execution separate from reasoning.
 
-## VI. Markdown Files as Office Records
+### 🔑 Least Privilege
+Every tool: Strict schema, Minimal arguments, Explicit side effects, Logged invocation.
 
-*   `README.md` → Lobby directory.
-*   `AGENTS.md` → Staff handbook.
-*   `MEMORY.md` → Master archive.
-*   `memory/YYYY-MM-DD.md` → Daily ledger.
-*   `USER.md` → Sovereign preferences file.
-*   `SOUL.md` → Behavioral charter.
-*   `SKILL.md` → Tool manuals.
+### 🔒 Encryption
+Secrets encrypted at rest. Secure transport. Local-only option for sovereignty.
 
-*These are records. They are not authority sources. Authority comes from Safe Mode.*
+### 💾 Backups
+Encrypted vault backup. Versioned archive backup. Configuration backup. Documented restore procedure.
+*Resilience is required, not optional.*
 
 ---
 
-## VII. Operational Flow
+## VI. Governance Layer
 
-1.  **Sovereign** issues instruction.
-2.  **Zaphod** creates work order.
-3.  **Relevant staff** receive sanitized objects.
-4.  **Work products** become new artifacts.
-5.  **Dent** reviews if outbound.
-6.  **Trillian** schedules if required.
-7.  **Deep Thought** archives appropriately.
-8.  **Logs** are recorded.
+**This is infrastructure, not software.**
 
-*At no point does a single staff member:*
-*   Control secrets,
-*   Draft,
-*   Approve,
-*   Publish,
-*   And modify infrastructure simultaneously.
+### 📜 Audit Logs
+Every Staff action, Tool call, Secret request, Mode change, and Approval event is logged. Logs are Immutable, Timestamped, Reviewable.
 
-*That separation is deliberate.*
+### 🔁 Rollback
+Workflows are Versioned, Revertible, Testable. Vault is Recoverable, Backup-validated.
+
+### 👁 Visibility
+The Sovereign can see: What ran, When, What it touched, What it produced. No hidden automation.
+
+### 🧾 Accountability
+Chief decisions logged. Dent vetoes logged. Engineer executions logged. Secret retrieval logged.
+*Enables Trust, Postmortem clarity, Compliance support.*
 
 ---
 
-## VIII. Final Principle
+## VII. What This Actually Is
 
-The staff are competent but constrained.
+**Bastion is:**
+*   A staffed, constrained AI execution environment
+*   A coordination appliance
+*   A memory substrate
+*   A deterministic workflow engine
+*   A privilege-separated infrastructure layer
 
-*   Intelligence is separated from authority.
-*   Memory is separated from disclosure.
-*   Secrets are separated from reasoning.
-*   Execution is separated from drafting.
+**It is not:**
+*   An autonomous playground
+*   A shell-enabled AI
+*   A self-modifying system
+*   A general OS assistant
 
-The **Sovereign** remains the only unified authority in the office.
-The system earns longevity through discipline.
+---
+
+## VIII. The Big Picture
+
+1.  **Layer 0:** Harden the ground.
+2.  **Layer 1:** Install and constrain intelligence.
+3.  **Safe Mode:** Enforce the constitution.
+4.  **Vault:** Protect identity.
+5.  **Chief:** Interpret and delegate.
+6.  **Staff:** Execute narrowly.
+7.  **Engineer:** Freeze workflows into deterministic code.
+
+Spy principles enforce discipline. Governance ensures visibility. Fractal batching ensures efficiency. Model agnosticism ensures longevity.
+
+If this structure holds, Bastion remains: **Predictable. Contained. Auditable. Expandable without collapse.**
+
+That is the spine. And if that spine stays intact, product, brand, and business can grow on top of it safely.
