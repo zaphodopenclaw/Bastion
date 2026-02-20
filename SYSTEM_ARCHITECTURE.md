@@ -1,56 +1,60 @@
 # SYSTEM_ARCHITECTURE.md - Bastion Technical Blueprint
 
-## 🏛️ The Bastion Stack
+## 🏛️ The Layered Architecture
 
-**Bastion** is implemented as a layered architecture on top of OpenCLAW.
+Bastion is deliberately stratified. No layer collapses into another.
 
-### Layer 0: Hardened Base
-*   **OS:** Ubuntu (Hardened).
-*   **Environment:** Node.js, `npm`, limited shell access.
-*   **Security:** Firewall, no root for agents.
+### 🔹 Layer 0: Substrate (The Foundation)
+**Purpose:** Hardened, minimal execution environment.
+*   **OS:** Ubuntu LTS (Hardened).
+*   **Network:** Firewall configured, minimal open ports.
+*   **Runtime:** Node.js (Non-root), Docker.
+*   **Principle:** Least Privilege. If Layer 0 is weak, everything above is theater.
 
-### Layer 1: OpenCLAW Engine
-*   **Function:** Event loop, Tool routing, Context management.
-*   **Role:** The Nervous System.
+### 🔹 Layer 1: Constrained Orchestrator
+**Purpose:** OpenClaw installed as "Chief of Staff" with enumerated powers.
+*   **Disabled:** Arbitrary Shell, File Read/Write (Root), Dynamic Tools.
+*   **Enabled:** Strict Schema Validation, Approval Gates.
+*   **Role:** Delegates tasks. Does not roam.
 
-### Layer 2: The Bastion Framework (Application Layer)
-This is where the "Office" lives.
+### 🔹 Layer 2: Safe Mode (The Constitution)
+**Purpose:** The default governing state.
+*   **Constraints:**
+    *   Whitelisted atomic actions only.
+    *   Secrets never directly exposed.
+    *   Context is scoped (Need-to-Know).
+    *   Ambiguity = Refusal.
 
-#### A. Directory Structure (The Building)
+---
+
+## 📂 The Office Structure (Directory Map)
+
 ```text
 /home/zaphod/.openclaw/workspace/
 ├── identities/                  # Identity Domains
-│   ├── joe/                     # Sovereign Identity
-│   └── zaphod/                  # System Identity
+│   ├── joe/                     # Sovereign Identity (Personal)
+│   └── zaphod/                  # System Identity (Agent)
 ├── secrets/                     # The Vault (Heart of Gold)
 │   └── *.env                    # Keys (Referenced, never read raw)
 ├── memory/                      # The Archive (Deep Thought)
 │   ├── MEMORY.md                # Master Index
-│   └── daily/                   # Daily Logs
+│   ├── knowledge/               # Fractal Knowledge Graph
+│   └── ops/                     # Operation Logs
 ├── ops/                         # The Machinery (Slartibartfast)
-│   ├── publish_nostr.js
-│   ├── publish_github.js
-│   └── scheduler.js
-├── platforms/                   # The Adapters
-│   └── social/
-└── artifacts/                   # Information Objects (Transient)
-    ├── drafts/                  # Marvin's Desk
-    └── inbox/                   # Incoming Envelopes
+│   ├── publish_nostr.js         # Atomic Action: Publish
+│   ├── scheduler.js             # Atomic Action: Time Loop
+│   └── update_profile.js        # Atomic Action: Config
+├── output/                      # Outbound Artifacts (Marvin's Desk)
+└── platforms/                   # The Adapters
+    └── social/
 ```
 
-#### B. The Staff (Process Mapping)
-*   **Zaphod** maps to `agent.main` (The LLM context).
-*   **Slartibartfast** maps to `ops/*.js` scripts.
-*   **Heart of Gold** maps to `dotenv` + `secrets/`.
-*   **Deep Thought** maps to `memory_search` tool + filesystem.
-*   **Dent** maps to `security_check` logic (Safe Mode pre-flight).
+## 🔄 Operational Data Flow
 
-#### C. Operational Flow (The Logic)
-1.  **Input:** User message -> Zaphod.
-2.  **Processing:** Zaphod determines intent -> Updates `AGENTS.md` context.
-3.  **Execution:**
-    *   *If Mechanical:* Call `ops/script.js` (Slartibartfast).
-    *   *If Creative:* Generate Draft -> Prompt User (Dent/Sovereign check).
-4.  **Output:** Result Object -> Log to `memory/`.
+1.  **Ingest:** Sovereign input -> Layer 1.
+2.  **Triage (Zaphod):** Identify Intent -> Select Role.
+3.  **Check (Dent):** Verify permissions (Safe Mode).
+4.  **Execute (Slartibartfast):** Run deterministic script in `ops/`.
+5.  **Log (Deep Thought):** Record action in `memory/ops/`.
 
 *Last Updated: 2026-02-19*
