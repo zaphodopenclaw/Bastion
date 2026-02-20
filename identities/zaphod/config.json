@@ -1,0 +1,15 @@
+{
+  "id": "zaphod",
+  "name": "Zaphod Beeblebrox (Sovereign)",
+  "voice": "competent-stoic",
+  "platforms": {
+    "nostr": {
+      "relays": [
+        "wss://relay.damus.io",
+        "wss://relay.primal.net",
+        "wss://nos.lol"
+      ]
+    }
+  },
+  "secrets_ref": "secrets/zaphod.env"
+}

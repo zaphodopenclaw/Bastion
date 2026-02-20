@@ -1,0 +1,14 @@
+{
+  "id": "joe",
+  "name": "Joe (Sovereign)",
+  "voice": "personal",
+  "platforms": {
+    "nostr": { "enabled": true },
+    "bluesky": { "enabled": true },
+    "x": { "enabled": true },
+    "facebook": { "enabled": true },
+    "instagram": { "enabled": true },
+    "tiktok": { "enabled": true }
+  },
+  "secrets_ref": "secrets/joe.env"
+}
